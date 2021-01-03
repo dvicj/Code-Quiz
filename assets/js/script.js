@@ -1,7 +1,4 @@
-var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit'); 
-var timerButton = document.getElementById('start');
+
 
 // var buttonEl = document.querySelector("#timer"); 
 
@@ -11,6 +8,24 @@ var timerButton = document.getElementById('start');
 // var quizAnswersEl = document.querySelector("#quiz-answers");
 
 
+
+
+
+
+// var count = 120; 
+// var counter = setInterval(timer, 1000); //will run every second
+// function timer () {
+//     count=count-1; 
+//     if (count <= 0) {
+//         clearInterval(counter); 
+//         //counter ended - end quiz 
+//         return; 
+//     }
+
+//     
+// }
+
+//variables 
 var quizQuestions = [
     // question 1 
     {
@@ -126,96 +141,137 @@ var quizQuestions = [
         correctAnswer: "e",
         notation: "While everyone is different, most computer coders (both advanced and beginner) agree that using resources such as Google and practicing is the best way to learn all kinds of code."
     }
-]
+];
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit'); 
+var timerButton = document.getElementById('start');
+//change slides 
+// var previousButton = document.getElementById("previous");
+// var nextButton = document.getElementById("next");
+// var slides = document.querySelectorAll(".slide");
+// var currentSlide = 0; 
 
-//countdown timer 
-function startTimer() {
-    var counter = 120; 
-    setInterval (function () {
-        counter--; 
-        if (counter >= 0){
-            span = document.getElementById("timer");
-            span.innerHTML = counter; 
-        }
-        if (counter === 0) {
-            alert("Sorry, you've run out of time.");
-            clearInterval(counter);
-        }
-    }, 1000); 
-}
-function start() 
-{
-    document.getElementById("timer"); 
-    startTimer(); 
-} 
-
-// var count = 120; 
-// var counter = setInterval(timer, 1000); //will run every second
-// function timer () {
-//     count=count-1; 
-//     if (count <= 0) {
-//         clearInterval(counter); 
-//         //counter ended - end quiz 
-//         return; 
-//     }
-
-//     
-// }
-
-var buildQuiz = function () {
-    var output = []; 
-    //for each question 
-    quizQuestions.forEach(
-        (currentQuestion, questionNumber) => {
-            //list of possible answers 
-            var answers = [];
-            for(letter in currentQuestion.answers) {
-                answers.push(
-                    `<label> <input type="radio" name="question${questionNumber}" value="${letter}"> 
-                    ${letter} : 
-                    ${currentQuestion.answers[letter]} 
-                    </label>`
+    function showResults(){
+    //countdown timer 
+    function startTimer() {
+        var counter = 120; 
+        setInterval (function () {
+            counter--; 
+            if (counter >= 0){
+                span = document.getElementById("timer");
+                span.innerHTML = counter; 
+            }
+            if (counter === 0) {
+                alert("Sorry, you've run out of time.");
+                clearInterval(counter);
+            }
+        }, 1000); 
+    }
+    function start() 
+    {
+        document.getElementById("timer"); 
+        startTimer(); 
+    } 
+    //start quiz 
+    buildQuiz(); 
+    //quiz 
+    function buildQuiz() {
+        //variable to store output 
+         var output = []; 
+         //for each question 
+        quizQuestions.forEach(
+            (currentQuestion, questionNumber) => {
+                //list of possible answers 
+                var answers = [];
+                for(letter in currentQuestion.answers) {
+                    answers.push(
+                     `<label> <input type="radio" name="question${questionNumber}" value="${letter}"> 
+                     ${letter} : 
+                     ${currentQuestion.answers[letter]} 
+                     </label>`
+                    );
+                }
+                // add this question and its answers to the output
+                output.push(
+                 `<div class="slide">
+                    <div class="question"> ${currentQuestion.question} </div> 
+                    <div class="answers"> ${answers.join('')} </div>
+                 </div>`
                 );
             }
-            // add this question and its answers to the output
-            output.push(
-                `<div class="question"> ${currentQuestion.question} </div> 
-                <div class="answers"> ${answers.join('')} </div>`
-            );
+        );
+        //combine our output list into one string of HTML and put it on the page 
+     quizContainer.innerHTML = output.join(''); 
         }
-    );
-    //combine our output list into one string of HTML and put it on the page 
-    quizContainer.innerHTML = output.join(''); 
-};
 
-function showResults(){
-    // get answers from quiz 
-    var answerContainers = quizContainer.querySelectorAll('.answers');
-    // keep track of user's answers 
-    let numCorrect = 0; 
-    //for each question 
-    quizQuestions.forEach( (currentQuestion, questionNumber) => {
-        //find answers 
-        var answerContainer = answerContainers[questionNumber];
-        var selector = 'input[name=question${questionNumber}]: checked';
-        var userAnswer = (answerContainer.querySelector(selector) || {}).value; 
+  
+    
+        // get answers from quiz 
+        var answerContainers = quizContainer.querySelectorAll('.answers');
+        // keep track of user's answers 
+        let numCorrect = 0; 
+        //for each question 
+        quizQuestions.forEach( (currentQuestion, questionNumber) => {
+            //find answers 
+            var answerContainer = answerContainers[questionNumber];
+            var selector = `input[name=question${questionNumber}]: checked`;
+            var userAnswer = (answerContainer.querySelector(selector) || {}).value; 
 
-        //if answer is correct 
-        if(userAnswer === currentQuestion.correctAnswer){
-            //add to the number of correct answers 
-            numCorrect++; 
-            //color the answers bright orange 
-            answerContainers[questionNumber].style.color = 'orange';
-        }   
-        //if answer is wrong/ not chosen 
-        else {
-            //color the answers grey 
-            answerContainers[questionNumber].style.color = 'grey';
+            //if answer is correct 
+            if(userAnswer === currentQuestion.correctAnswer){
+                //add to the number of correct answers 
+                numCorrect++; 
+                //color the answers bright orange 
+                answerContainers[questionNumber].style.color = 'orange';
+            }   
+            //if answer is wrong/ not chosen 
+            else {
+                //color the answers grey 
+                answerContainers[questionNumber].style.color = 'grey';
+            }
+        });
+        //show number of correct answers out of total 
+        resultsContainer.innerHTML= `${numCorrect} out of ${myQuestions.length}`;
+    };
+
+    
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active-slide');
+        slides[n].classList.add('active-slide');
+        var currentSlide = n; 
+        if (currentSlide === 0) {
+            previousButton.style.display = 'none';
+        } else {
+            previousButton.style.display = 'inline-block';
         }
-    });
-    //show number of correct answers out of total 
-    resultsContainer.innerHTML= '${numCorrect} out of ${myQuestions.length}';
-}
+        if (currentSlide === slides.length-1) {
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'inline-block';
+        } else {
+            nextButton.style.display = 'inline-block';
+            submitButton.style.display = 'none';
+        }
+    }
+    function showNextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function showPreviousSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    showSlide(currentSlide);
+
+    //event listeners 
+
+    submitButton.addEventListener('click', showResults);
+    previousButton.addEventListener("click", showPreviousSlide);
+    nextButton.addEventListener("click", showNextSlide);
+
+
+
+
 
 // var quizQuestionEl = function () { 
 //     var quizQuestion = document.createElement("ul");
@@ -235,6 +291,6 @@ function showResults(){
 //start timer/ quiz 
 
 //document.getElementById("timer").addEventListener("click", buildQuiz());
-submitButton.addEventListener('click', showResults);
-timerButton.addEventListener('click', buildQuiz);
-buildQuiz(); 
+
+
+
