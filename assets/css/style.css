@@ -40,13 +40,3 @@
     align-items: center;
     justify-content: space-around;
 }
-
-.quiz-questions {
-    font-size: 35px; 
-    background-color: var(--orange);
-}
-
-.quiz-answers {
-    font-size: 20px; 
-    background-color: var(--orange);
-}
