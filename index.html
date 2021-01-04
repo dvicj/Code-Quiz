@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devin's Patented JavaScript Quiz!</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/script.js"></script>
+    
 </head>
 <body id="page-content">
-    <header class = "quiz-header">
+    <header class = "page-header">
         <h1>JavaScript Code Quiz!</h1>
         <span>Welcome to my code quiz! You will have a total of 2 minutes (120 seconds) to answer 
             10 questions on JavaScript fundamentals. Every wrong answer will deduct 10 
@@ -18,11 +18,20 @@
         </span>
     </header>
 
-    <div class = "quiz-content" id = "quiz"></div>
-    <button onclick="start()">Start Quiz!</button>
-    <div>Time remaining: <span id="timer"></span> seconds remaining</div>
-    <button id = "submit"> Submit answers.</button>
-    <div id = "results"></div>
+   
+
+    <!-- timer/ submit button -->
+    <button id="start">Start Quiz!</button>
+    <div>Time remaining: <span id="timer">120</span> seconds remaining</div>
+
+    <!-- quiz content -->
+    <div id="test">why isn't my quiz loading</div>
+
+    <!-- quiz navigation -->
+    <button id="submit"> Submit answers.</button>
+    <div id="results"></div>
+
+    <script src="./assets/js/script 2.js"></script>
     
 </body>
 </html>
