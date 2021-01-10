@@ -1,84 +1,347 @@
-* {
+*{
     margin: 0;
-    padding: 0; 
-    font-size: 20px;
-    text-decoration: none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Goldman', cursive;
 }
+
 :root {
-    --transgrey: rgba(69,71,70,.75);
-    --grey: rgb(69,71,70);
-    --orange: rgb(247,112,0); 
+    --light-red: #FF5046;
+    --red: #FF0F00; 
+    --dark-red: #DD0B00; 
+    --light-yellow: #FEFE47 ;
+    --yellow: #FFFF01; 
+    --dark-yellow: #DCDC01;
+    --light-blue: #4242FF;  
+    --blue: #0000F9; 
+    --dark-blue: #000082; 
 }
 
-.page-header {
-    display: flex; 
-    align-content: center;
-    flex-wrap: wrap;
-    flex-flow: column;
+body{
+    background: var(--yellow);
 }
-.page-header h1 {
+
+::selection{
+    color: #fff;
+    background: var(--dark-red)
+}
+
+.startButton,
+.infoBox,
+.quizBox,
+.resultBox,
+.highScoreBox
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;  
+    transform: translate(-50%, -50%);
+    box-shadow: 3px 3px 3px black;
+}
+
+.infoBox.activeInfo,
+.quizBox.activeQuiz,
+.resultBox.activeResult,
+.highScoreBox.activeScore
+{
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.startButton button{
+    font-size: 25px;
+    color:#fff;   
+    padding: 15px 30px;
+    background: var(--blue);
+    box-shadow: 3px 3px 3px var(--dark-red);
+    cursor: pointer; 
+    outline:none; 
+    border: none; 
+}
+
+.startButton button:hover {
+    background-color: var(--dark-blue);
+    color: gray;
+}
+
+.infoBox{
+    width: 540px;
+    background: var(--light-blue);
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    box-shadow: 3px 3px 3px var(--dark-red);
+    transition: all 0.2s linear; 
+    pointer-events: none;
+}
+
+.infoBox .infoTitle{
+    height: 65px;
+    width: 100%;
+    border-bottom: 3px groove var(--light-yellow);
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    font-size: 30px;
+    text-shadow: 2px 2px var(--light-yellow);
+}
+
+.infoBox .infoList{
+    padding: 20px;
+}
+
+.infoBox .infoList .info{
+    font-size: 20px;
+}
+
+.infoBox .infoList .info span{
+    font-weight: 600;
+    color: var(--light-blue);
+}
+
+.infoBox .buttons{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0 30px; 
+    border-top: 3px groove var(--light-yellow);
+}
+
+.infoBox .buttons button{
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    cursor: pointer; 
+    box-shadow: 3px 3px 3px black;
+    transition: all 0.3s ease;
+}
+
+.quizBox,
+.highScoreBox
+{
+    width: 550px;
+    background: var(--light-blue);
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    box-shadow: 3px 3px 3px var(--dark-blue);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.quizBox header,
+.highScoreBox header {
+    position: relative;
+    z-index: 2;
+    height: 70px;
+    padding: 0 30px;
+    border-bottom: 3px groove var(--light-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 3px 3px 3px black;
+}
+
+.quizBox header .title,
+.highScoreBox header .title{
+    font-size: 28px;
+    text-shadow: 2px 2px var(--light-yellow);
+}
+
+.quizBox header .timer{
+    color: var(--red);
+    background: var(--light-yellow);
+    border: 2px solid var(--blue);
+    height: 45px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+}
+
+.quizBox header .timer .timeLeftText {
+    font-size: 17px;
+}
+
+.quizBox header .timer .timerSec{
+    font-size: 25px;
+    height: 30px;
+    width: 45px;
+    color:var(--blue);
+    line-height: 30px;
     text-align: center;
-    font-size: 45px; 
-    text-shadow: var(--orange) 3px 3px 3px;
-    height: 100px; 
-    padding-top: 25px;
-}
-.page-header span {
-    text-align: center;
-    background-color: var(--orange);
-    border: 10px var(--grey); 
-    border-radius: 10px;
-    color:var(--grey);
+    user-select: none;
 }
 
 
-.question {
-    font-size: 25px; 
-    color: var(--orange); 
-    background-color: var(--grey);
-    border-radius: 10px;
+section{
+    padding: 25px 30px 20px 30px;
 }
 
-.answers {
-    text-align: left;
-    display: block;
-    background-color: var(--orange);
-    border-radius:10px; 
+section .queText{
+    font-size: 25px;
 }
 
-.answers:hover {
+section .nameText, 
+section .scoreText {
+    font-size: 25px;
 }
 
-.answers label {
-    display: block; 
+section .optionList{
+    padding: 20px;
+    display: block;   
 }
 
-.quiz-content {
-    display: flex; 
-    align-content: center;
+section .optionList .option{
+    background: var(--light-yellow);
+    border: 1px solid var(--red);
+    padding: 8px 15px;
+    font-size: 17px;
+    display: flex;
     align-items: center;
     justify-content: space-around;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.slide {
-    position: absolute; 
-    left: 0px;
-    top: 0px; 
-    width: 100%;
-    z-index: 1; 
+section .optionList .option:hover{
+    background: var(--dark-yellow);
+    border: 1px solid var(--dark-yellow);
+    box-shadow: var(--blue);
+}
+
+section .optionList .option.correct{
+    color: green;
+    background: lightgreen;
+    border: 2px dotted darkgreen;
+}
+
+section .optionList .option.incorrect{
+    color: var(--red);
+    background: var(--light-red);
+    border: 2px dotted var(--red);
+}
+
+section .optionList .option.disabled{
+    pointer-events: none;
+}
+
+footer{
+    height: 65px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 3px groove var(--yellow);
+}
+
+footer .totalQue span{
+    display: flex;
+}
+
+footer .totalQue span p{
+    padding: 0 5px;
+}
+
+footer button{
+    height: 40px;
+    padding: 0 13px;
+    font-size: 18px;
+    color: green;
+    background: #fff;
+    border: 2px solid darkgreen;
+    box-shadow: 3px 3px 3px black;
+    line-height: 10px;
     opacity: 0;
-    transition: opacity 0.5s;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.active-slide {
+footer button:hover{
+    background: green;
+    color:#fff; 
+}
+
+footer button.show{
     opacity: 1;
-    z-index: 2; 
+    pointer-events: auto;
+    transform: scale(1);
 }
 
-.quiz-container {
-    position: relative; 
-    height: 200px; 
-    margin-top: 40px;
+.resultBox{
+    background: var(--light-blue);
+    border: 2px solid var(--red);
+    display: flex;
+    padding: 25px 30px;
+    width: 450px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(-50%, -50%)scale(0.9);
+    opacity: 0;
+    box-shadow: var(--red);
+    transition: all 0.3s ease;
 }
+
+.resultBox .completeText{
+    font-size: 20px;
+}
+
+.resultBox .scoreText span{
+    display: flex;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.resultBox .scoreText span p{
+    padding: 0 4px;
+}
+
+.resultBox .buttons{
+    display: flex;
+    margin: 20px 0;
+}
+
+.resultBox .buttons button{
+    margin: 0 10px;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 15px;
+    border: 2px solid var(--dark-blue);
+    box-shadow: 3px 3px 3px var(--dark-yellow);
+    transition: all 0.3s ease;
+}
+
+.buttons button.restart{
+    color: green;
+    background: #fff;
+}
+
+.buttons button.restart:hover{
+    background: green; 
+    color: #fff; 
+}
+
+.buttons button.quit{
+    color: red;
+    background: #fff;
+}
+
+.buttons button.quit:hover{
+    color: #fff;
+    background: red;
+}
+
+.buttons button.save{
+    color: var(--yellow); 
+    background: #fff;
+}
+.buttons button.save:hover{
+    color:#fff; 
+    background: var(--yellow)
+}
+

@@ -8,7 +8,7 @@ var myQuestions = [
             c: "An external script sheet.",
             d: "All of the above."
         },
-        correctAnswer: "d",
+        correctAnswer: "d"
     },
     // question 2 
     {
@@ -17,7 +17,7 @@ var myQuestions = [
             a:"Yes, JavaScipt acknowledges all white space in code and it can effect the outcome of your function.",
             b:"No, JavaScript is lazy and doens't acknowledge anything it doesn't have to."
         },
-        correctAnswer: "b", 
+        correctAnswer: "b"
     },
     // question 3 
     {
@@ -27,7 +27,7 @@ var myQuestions = [
             b: "// comment here ",
             c: "/* comment here */ ",
         },
-        correctAnswer: "b", 
+        correctAnswer: "b" 
     },
     // question 4
     {
@@ -36,7 +36,7 @@ var myQuestions = [
             a: "Yes, JavaScript is not case sensitive and will read these two lines of code as the same thing.",
             b: "No, JavaScript is case sensitive and will read these two lines of code as different from eachother."
         },
-        correctAnswer: "b",   
+        correctAnswer: "b"   
     },
     // question 5
     {
@@ -46,7 +46,7 @@ var myQuestions = [
             b: "A JavaScript function does not have to be called to execute.",
             c: "A JavaScript function can only be used once."
         },
-        correctAnswer: "a", 
+        correctAnswer: "a" 
     },
     // question 6
     {
@@ -59,7 +59,7 @@ var myQuestions = [
             e: "B and C"
 
         },
-        correctAnswer: "d", 
+        correctAnswer: "d" 
     },
     // question 7
     {
@@ -70,7 +70,7 @@ var myQuestions = [
             c: "All of the above."
             
         },
-        correctAnswer: "c",
+        correctAnswer: "c"
     },
     // question 8 
     {
@@ -79,7 +79,7 @@ var myQuestions = [
             a: "Use 'debugger;' before and after the code you are trying to troubleshoot.", 
             b: "Edit your code and refresh the page to try and determine where the error is coming from." 
         },
-        correctAnswer: "a", 
+        correctAnswer: "a" 
     }, 
     // question 9 
     {
@@ -88,7 +88,7 @@ var myQuestions = [
             a: "You don't, JavaScript is already running for free in all browsers.",
             b: "JavaScript can be downloaded for $9.99 at 'javascriptdownload.org' and only works on Google Chrome."
         },
-        correctAnswer: "a", 
+        correctAnswer: "a" 
     },
     // question 10
     {
@@ -101,7 +101,7 @@ var myQuestions = [
             e: "All of the above."
 
         },
-        correctAnswer: "e",  
+        correctAnswer: "e"  
     }
 ];
 var quizContainer = document.getElementById('test');
@@ -126,7 +126,6 @@ function generateQuiz (questions, quizContainer, resultsContainer, submitButton,
             }
         }, 1000); 
     }
-
     function showQuestions (questions, quizContainer){
         // place to store output/ answer choices 
         var output = [];
@@ -173,10 +172,11 @@ function generateQuiz (questions, quizContainer, resultsContainer, submitButton,
                 //add to the number of correct answers 
                 numCorrect++; 
                 //color the answers ____
-                answerContainers[i].style.color = 'lightgreen';
+                answerContainers[i].style.color = 'blue';
             } else {
                 //color the answers ___
                 answerContainers[i].style.color = 'red';
+                //remove 10 sec. from the timer 
             }
         }
         //show number of correct answers out of total 
@@ -194,6 +194,7 @@ function generateQuiz (questions, quizContainer, resultsContainer, submitButton,
     timerButton.onclick = function() {
         startTimer();
     }
+
 };
 generateQuiz(); 
 

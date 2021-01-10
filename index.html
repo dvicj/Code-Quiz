@@ -4,34 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devin's Patented JavaScript Quiz!</title>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="./assets/css/style.css">
     
 </head>
-<body id="page-content">
-    <header class = "page-header">
-        <h1>JavaScript Code Quiz!</h1>
-        <span>Welcome to my code quiz! You will have a total of 2 minutes (120 seconds) to answer 
-            10 questions on JavaScript fundamentals. Every wrong answer will deduct 10 
-            seconds from the clock. Once you have answered all of the questions - or run out of time -
-            the quiz will be finished and you will be able to submit your score. 
-            Have fun! 
-        </span>
-    </header>
+<body>
+    <!-- start quiz button -->
+    <div class="startButton"><button>START QUIZ</button></div>
 
-   
-
-    <!-- timer/ submit button -->
-    <button id="start">Start Quiz!</button>
-    <div>Time remaining: <span id="timer">120</span> seconds remaining</div>
+    <!-- info -->
+    <div class="infoBox">
+        <div class="infoTitle"><span>Welcome!</span></div>
+        <div class="infoList">
+            <span class="info">Welcome to my code quiz! All questions have a 12 second time limit. If you answer incorrectly, your time is up for that question
+                and the next question will appear. Stick around to the end to record your highscore. Have fun! 
+            </span>
+        </div>
+        <div class="buttons">
+            <button class="quit">EXIT</button>
+            <button class="restart">CONTINUE</button>
+        </div>
+    </div>
 
     <!-- quiz content -->
-    <div id="test">why isn't my quiz loading</div>
+    <div class="quizBox">
+        <header>
+            <div class="title">JavaScript Code Quiz!</div>
+            <div class="timer">
+                <div class="timeLeftText">TIME LEFT</div>
+                <div class="timerSec">12</div>
+            </div>
+        </header>
+        <section>
+            <div class="queText">
+                <!-- div for holding questions -->
+            </div>
+            <div class="optionList">
+                <!-- div for holding options -->
+            </div>
+        </section>
 
-    <!-- quiz navigation -->
-    <button id="submit"> Submit answers.</button>
-    <div id="results"></div>
+        <!-- footer -->
+        <footer>
+            <div class="totalQue">
+                <!-- div for holding number of questions -->
+            </div>
+            <button class="nextButton">NEXT</button>
+        </footer>
+    </div>
 
-    <script src="./assets/js/script 2.js"></script>
+    <!-- results -->
+    <div class="resultBox">
+        <div class="completeText">WELL DONE!</div>
+        <div class="scoreText">
+        </div>
+        <div class="buttons">
+            <button class="restart">REPLAY</button>
+            <button class="quit">QUIT</button>
+            <button class="save">SAVE HIGH SCORE</button>
+        </div>
+    </div>
+
+    <!-- enter name for localStorage and high score box -->
+    <div class="highScoreBox">
+        <header>
+            <div class="title">Scores</div>
+        </header>   
+        <section>
+            <div class="nameText">
+                <!-- insert user name -->
+            </div>
+            <div class="scoreTextFinal">
+                <!-- insert user score -->
+            </div>
+        </section>
+    </div>
+
+    <script src="./assets/js/script 3.js"></script>
     
 </body>
 </html>
