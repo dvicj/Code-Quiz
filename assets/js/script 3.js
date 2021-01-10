@@ -129,6 +129,7 @@ var timeCount = document.querySelector(".timer .timerSec");
 // start button clicked
 startButton.onclick = ()=>{
     infoBox.classList.add("activeInfo"); //show info/welcome box
+    console.log("start button was clicked")
 }
 
 
