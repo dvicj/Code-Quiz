@@ -45,22 +45,30 @@ Below are examples of the links for the CSS style sheet and the images used in t
 ![image relative path](https://github.com/dvicj/Horiseon-Accessibility/blob/main/image%20relative%20path.PNG)
 
 ## Usage
+![quiz in action](https://github.com/dvicj/Code-Quiz/blob/develop/javascript%20quiz%20demo.gif)
+
 Here are some user experience highlights from my page: 
 
     - when the user clicks on the "START QUIZ" button, a welcome message pops up with the option to Start the quiz or Exit. When the user clicks "EXIT" the page will reload.
+
     - when the user chooses to start the quiz, then the question will be presented to them. The user has 12 seconds to answer the question. Once they chose their answer, it will highlight green if correct, or red if incorrect. The user can then click on the "NEXT" button to be brought to the next question. 
+
     - when the quiz is completed the user will get a message telling them their score and the option to "Save". If they chose to save their score, the browser will prompt the user for their name. Once inputted, the "Score" page will update with the user's name and score. This information is saved to local storage.
 
 ## Credits
 These are some sources I used to help me along:
 
 - I got ideas for my questions here:
-[JavaScript MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[JavaScript W3 Schools](https://www.w3schools.com/js/js_intro.asp)
 
--Examples I referenced while working: 
-[How to Make a Simple JavaScript Quiz](https://www.sitepoint.com/simple-javascript-quiz/)
-[How to make a simple JavaScript quiz](https://simplestepscode.com/javascript-quiz-tutorial/)
+    - [JavaScript MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+    <br>
+    - [JavaScript W3 Schools](https://www.w3schools.com/js/js_intro.asp)
+
+- Examples I referenced while working: 
+
+    - [How to Make a Simple JavaScript Quiz](https://www.sitepoint.com/simple-javascript-quiz/)
+    <br>
+    - [How to make a simple JavaScript quiz](https://simplestepscode.com/javascript-quiz-tutorial/)
 
 - [HTML Web Storage API](https://www.w3schools.com/html/html5_webstorage.asp)
 
@@ -69,7 +77,6 @@ These are some sources I used to help me along:
 - [Code for a simple JavaScript countdown timer?](https://stackoverflow.com/questions/1191865/code-for-a-simple-javascript-countdown-timer)
 
 - [Make countdown start after button is clicked](https://stackoverflow.com/questions/21670438/make-countdown-start-after-button-is-clicked)
-
 
 
 ## Learning
